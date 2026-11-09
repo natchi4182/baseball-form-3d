@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ピッチングフォーム比較3D 使い方ガイド</title>
+<meta name="description" content="ピッチングフォーム比較3Dの使い方（取扱説明書）">
+<style>
+:root{--ink:#16211b;--muted:#5b6b62;--line:#d8e0db;--bg:#fff;--soft:#eef3f0;--good:#1b7d58;--bad:#c4472c;--hl:#e0a100}
+@media (prefers-color-scheme: dark){:root{--ink:#e7eee9;--muted:#a3b2a9;--line:#33403a;--bg:#121815;--soft:#1b2420;--good:#5cc69a;--bad:#ff8a6e}}
+*{box-sizing:border-box}
+body{font-family:"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;line-height:1.85;max-width:44em;margin:0 auto;padding:24px 16px 48px;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%}
+h1{font-size:23px;line-height:1.4;margin:.2em 0 .1em}
+h1 small{display:block;font-size:14px;color:var(--muted);font-weight:500}
+h2{font-size:18px;margin:40px 0 10px;padding-top:12px;border-top:1px solid var(--line);display:flex;gap:10px;align-items:baseline}
+h2 .no{flex:none;display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:14px}
+h3{font-size:15.5px;margin:22px 0 4px}
+a{color:var(--good)}
+p,li{font-size:15.5px}
+ul,ol{padding-left:1.3em}
+li{margin:.25em 0}
+.lead{color:var(--muted)}
+.toc{background:var(--soft);border-radius:12px;padding:12px 16px;margin:18px 0}
+.toc ol{margin:0;columns:2;column-gap:24px}
+@media (max-width:520px){.toc ol{columns:1}}
+.toc a{text-decoration:none;color:var(--ink)}
+figure{margin:14px 0;text-align:center}
+figure img{max-width:100%;width:360px;border-radius:12px;border:1px solid var(--line)}
+figure.wide img{width:100%;max-width:420px}
+figure.cut{position:relative;max-height:520px;overflow:hidden}
+figure.cut::after{content:"";position:absolute;left:0;right:0;bottom:0;height:80px;background:linear-gradient(transparent,var(--bg))}
+figcaption{font-size:13px;color:var(--muted);margin-top:4px}
+.pair{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.pair figure{flex:1 1 150px;max-width:220px;margin:6px 0}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;position:relative;padding:10px 12px 10px 48px;background:var(--soft);border-radius:12px;margin:8px 0}
+.steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:26px;height:26px;border-radius:50%;background:var(--bad);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px}
+.tip{border-left:4px solid var(--hl);background:var(--soft);padding:8px 12px;border-radius:0 10px 10px 0;margin:12px 0;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;margin:8px 0}
+th,td{border-bottom:1px solid var(--line);padding:7px 6px;text-align:left;vertical-align:top}
+th{width:8.5em;color:var(--muted);font-weight:600}
+.g{color:var(--good);font-weight:700}.b{color:var(--bad);font-weight:700}.y{color:var(--hl);font-weight:700}
+.dot{display:inline-block;width:.8em;height:.8em;border-radius:50%;background:var(--bad);vertical-align:-.05em}
+.dot.o{background:none;border:1.5px solid var(--bad)}
+.sq{display:inline-block;width:.8em;height:.8em;border-radius:2px;background:var(--bad);vertical-align:-.05em}
+.foot{margin-top:40px;font-size:13.5px;color:var(--muted)}
+@media print{body{max-width:none;font-size:12pt}h2{break-after:avoid}figure,li,.tip{break-inside:avoid}.toc{display:none}}
+</style>
+</head>
+<body>
+<p><a href="./">← ピッチングフォーム比較3D サポート</a></p>
+<h1>ピッチングフォーム比較3D<small>使い方ガイド（取扱説明書）</small></h1>
+<p class="lead">良いフォームと、よくある崩れ方を、同じ時間軸で3Dの人体モデル（右投げ・中学生の体格の模式モデル）を動かして見比べるアプリです。この説明はバージョン 1.1.0 の画面で書いています。</p>
+<nav class="toc" aria-label="目次"><ol><li><a href="#parts">画面の各部</a></li><li><a href="#quick">まずはこの3つだけ</a></li><li><a href="#select">崩れを選ぶ</a></li><li><a href="#free">無料版と全機能の解放</a></li><li><a href="#view">見る向きと表示のしかた</a></li><li><a href="#play">動きを再生する・止める</a></li><li><a href="#toggles">補助線などの表示</a></li><li><a href="#panel">説明欄の読み方</a></li><li><a href="#chain">運動連鎖のグラフ</a></li><li><a href="#use">指導・説明での使い方の例</a></li><li><a href="#faq">よくある質問</a></li></ol></nav>
+<h2 id="parts"><span class="no">1</span>画面の各部</h2>
+
+<p>画面は上から順に、次のように並んでいます（iPhone の縦画面。iPad や横画面では、説明欄が右側に並びます）。上下にスクロールして使います。</p>
+<figure class="cut"><img src="howto/00-top.jpg" alt="アプリを開いたところ"><figcaption>アプリを開いたところ</figcaption></figure>
+<table><tr><th>1. タイトルと色の見方</th><td><span class="g">緑</span>＝良いフォーム、<span class="b">赤</span>＝崩れたフォーム、<span class="y">黄色</span>＝注目する部位</td></tr><tr><th>2. 崩れのボタン</th><td>比べたい崩れ方を選ぶ（全12種類）。選ぶと横に「程度」の点が出る</td></tr><tr><th>3. 3Dの表示</th><td>上（iPad では左）が良いフォーム、下（iPad では右）が選んだ崩れ。右上に見る向きのボタン、下に今の局面名</td></tr><tr><th>4. 表示の切り替え</th><td>「並べて比較」「重ねて比較」と、補助線などの表示のオン・オフ</td></tr><tr><th>5. 再生バー</th><td>再生・一時停止、前後の局面へ、時間のスライダー、局面名、再生速度</td></tr><tr><th>6. 運動連鎖のグラフ</th><td>体の各部位がどの順番で速く回っているか</td></tr><tr><th>7. 説明欄</th><td>選んだ崩れの特徴・理由・チェック方法・エクササイズの例・文献のデータ（iPad では画面の右側）</td></tr><tr><th>8. 使い方・このアプリについて</th><td>画面のいちばん下。「使い方」でこのガイドを開けます。「このアプリについて」には版番号・ご注意・使用しているソフトウェア。無料版では「全機能を解放」も並びます</td></tr></table>
+<h2 id="quick"><span class="no">2</span>まずはこの3つだけ</h2>
+
+<ol class="steps">
+<li><b>崩れのボタンを1つ押す</b><br>たとえば「股関節が硬い」。下の3D表示で、良いフォーム（緑）と、その崩れ方（赤）が同じ時間軸で動きます。</li>
+<li><b>見たい局面で止める</b><br>再生バーの下に並ぶ局面名（足接地・最大外旋・リリース など）を押すと、その瞬間で止まります。指でなぞって向きを変え、2本の指で拡大できます。</li>
+<li><b>説明欄を読む</b><br>3D表示の下（iPad では右側）に、その崩れの見た目の特徴、なぜ問題になるか、チェック方法、改善エクササイズの例が出ます。</li>
+</ol>
+<div class="tip">はじめは再生速度が 0.25×（実際の4分の1の速さ）になっています。実際の速さで見るときは 1× を押してください。</div>
+<h2 id="select"><span class="no">3</span>崩れを選ぶ</h2>
+
+<p>崩れのボタンは、次のグループに分かれて並んでいます（全12種類）。</p>
+<ul><li>下半身・ステップ（6種類）</li><li>上半身・腕（6種類）</li></ul>
+<figure class="wide"><img src="howto/01-patterns.jpg" alt="崩れのボタン。2つ選んで、横に程度の点が出ている"><figcaption>「股関節が硬い」と「インステップ」を選んだところ。「インステップ」は程度を2にしています</figcaption></figure>
+<h3>押すたびに追加・解除</h3>
+<p>ボタンを押すと赤くなり（✓が付きます）、もう一度押すと解除されます。<b>複数選ぶと、その崩れを重ね合わせた動き</b>になります（例：「股関節が硬い」＋「インステップ」）。何も選ばないと、下のモデルも良いフォームと同じ動きになります。まとめて外すときは、ボタンの下の「すべて解除」を押します。</p>
+<p>※複数選ぶことと、次の「程度」の変更は、全機能の解放後に使えます（<a href="#free">無料版と全機能の解放</a>）。</p>
+<h3>崩れの程度（0〜5）</h3>
+<p>選んだボタンの横に、5つの点が出ます。<b>塗りつぶされた点の数が「程度」</b>で、右の数字が今の値です。</p>
+<ul>
+<li>はじめは <b>4（標準）</b>です。四角い点 <span class="sq"></span> が標準の位置です。</li>
+<li>点を押すと、その数に変わります。<span class="dot"></span><span class="dot"></span><span class="dot o"></span><span class="sq" style="background:none;border:1.5px solid var(--bad)"></span><span class="dot o"></span> は程度2（軽い崩れ）、5 は標準より強い崩れです。</li>
+<li>1 の点をもう一度押すと <b>0（崩れなし）</b>になります。</li>
+</ul>
+<p>程度は「良いフォームからの差の大きさ」を変えたもので、軽い崩れから強い崩れまでを段階的に見せられます。崩れを複数選んだときは、それぞれ別に程度を変えられます。</p>
+<div class="tip">選んだ崩れと程度は、次にアプリを開いたときも残っています。</div>
+<h2 id="free"><span class="no">4</span>無料版と全機能の解放</h2>
+
+<p>アプリはダウンロード無料です。アプリ内課金（買い切り、¥500）で全機能が使えるようになります。</p>
+<table>
+<tr><th>無料版</th><td>崩れは 01・02・03・07・08・09 の6種類。1つずつ選ぶ（別のボタンを押すと切り替わる）。程度は標準の 4</td></tr>
+<tr><th>全機能</th><td>崩れの全12種類、複数の崩れの組み合わせ、程度 0〜5 の変更</td></tr>
+</table>
+<p>無料版では、使えないボタンと程度の点に 🔒 が付きます。押すと購入の画面が開きます。画面のいちばん下の「全機能を解放」からも開けます。再生・見る向き・補助線・説明欄・運動連鎖のグラフは、無料版でもすべて使えます。</p>
+<div class="tip">有料アプリだった時期に入手された方は、購入しなくても全機能が使えます。機種を替えたときや入れ直したときは、購入の画面の「購入を復元」を押してください（同じ Apple ID なら追加の支払いはありません）。</div>
+<h2 id="view"><span class="no">5</span>見る向きと表示のしかた</h2>
+
+<div class="pair">
+<figure><img src="howto/02-side.jpg" alt="並べて比較"><figcaption>並べて比較</figcaption></figure>
+<figure><img src="howto/03-over.jpg" alt="重ねて比較"><figcaption>重ねて比較</figcaption></figure>
+</div>
+<h3>並べて比較・重ねて比較</h3>
+<p>3D表示のすぐ下で切り替えます。</p>
+<ul>
+<li><b>並べて比較</b>：良いフォームと崩れを上下（iPad・横画面では左右）に並べます。全体の形の違いを見るのに向いています。</li>
+<li><b>重ねて比較</b>：2つを同じ場所に半透明で重ねます。どこがどれだけずれているかが一目で分かります。</li>
+</ul>
+<h3>見る向きを変える</h3>
+<ul>
+<li>右上のボタンで、三塁側・捕手側・二塁側・一塁側・真上から見た向きにすぐ切り替えられます。</li>
+<li>3D表示を<b>1本の指でなぞる</b>と、自由に回せます。<b>2本の指で広げる・狭める</b>と拡大・縮小します（Mac・パソコンではドラッグとホイール）。</li>
+<li>並べて比較では、上と下のモデルは同じ向きで動きます。</li>
+</ul>
+<h2 id="play"><span class="no">6</span>動きを再生する・止める</h2>
+
+<figure class="wide"><img src="howto/05-timeline.jpg" alt="再生バー"></figure>
+<table>
+<tr><th>● 再生ボタン</th><td>再生と一時停止。最後まで行ったら、もう一度押すと最初から再生します</td></tr>
+<tr><th>◀ ▶</th><td>前の局面・次の局面へ移動して止まります</td></tr>
+<tr><th>スライダー</th><td>指で左右に動かすと、好きな瞬間で止められます</td></tr>
+<tr><th>局面名</th><td>セット・足上げ・沈み込み・足接地・最大外旋・リリース・減速・フォロースルー。押すとその局面で止まります。太字は特に大事な局面（足接地・最大外旋・リリース）です</td></tr>
+<tr><th>再生速度</th><td>0.1×・0.25×・0.5×・1×。1× が実際の投球の速さです（セットから約1.8秒、足を着いてからリリースまでは約0.15秒）。まずは 0.25× でご覧ください。</td></tr>
+</table>
+<h2 id="toggles"><span class="no">7</span>補助線などの表示</h2>
+
+<p>「並べて比較」「重ねて比較」の横（または下）にあるチェックで、表示のオン・オフを切り替えます。</p>
+<figure class="wide"><img src="howto/04-toolbar.jpg" alt="表示の切り替え"></figure>
+<table><tr><th>補助線（肩・骨盤のライン）</th><td>肩を結ぶ線と骨盤を結ぶ線を表示します。肩の開きや体の傾きの違いが見やすくなります。</td></tr><tr><th>ボールの軌跡</th><td>ボールを持つ手の通り道を線で表示します。</td></tr><tr><th>重心の軌跡</th><td>全身の重心の通り道を表示します（はじめは表示しない設定です）。体の突っ込みの比較などに。</td></tr><tr><th>注目部位を光らせる</th><td>選んだ崩れで特に見てほしい部位を黄色く光らせます。</td></tr></table>
+<h2 id="panel"><span class="no">8</span>説明欄の読み方</h2>
+
+<figure class="cut"><img src="howto/06-panel.jpg" alt="説明欄"><figcaption>説明欄の上のほう</figcaption></figure>
+<p>選んだ崩れについて、次の順に表示されます。何も選んでいないときは「基準にしている良いフォーム」の要点が出ます。</p>
+<ul>
+<li><b>名前と短い説明</b>、今の程度</li>
+<li><b>「○○で止めて比べる」ボタン</b>：その崩れが一番よく分かる局面に移動して止まります</li>
+<li><b>データで見る影響（文献）</b>：論文で数値が報告されているものだけを、出典番号付きで紹介しています。数値が見つからなかったものは「データなし」と表示します</li>
+<li><b>見た目の特徴</b>：どこを見れば分かるか</li>
+<li><b>なぜ問題になるか</b></li>
+<li><b>チェック方法の例</b>：投手本人や指導者が確かめる方法の例</li>
+<li><b>改善エクササイズの例</b></li>
+<li><b>フォロースルーの比較</b>：模式モデルで計算した値を、良いフォームと並べた表</li>
+<li><b>出典・参考文献</b>：いちばん下を押すと開きます。本文中の［1］などの番号と対応しています</li>
+</ul>
+<p>崩れを複数選んだときは、崩れごとに説明が分かれ、名前を押すと開閉できます。</p>
+<h2 id="chain"><span class="no">9</span>運動連鎖のグラフ</h2>
+
+<figure class="wide"><img src="howto/07-chain.jpg" alt="運動連鎖のグラフ"></figure>
+<p>骨盤の回旋・胸（上胴）の回旋・肘の伸展・肩の内旋の速さを、時間に沿って線で表示します。縦軸は、良いフォームでの各部位の一番速いところを 100% とした値です。</p>
+<ul>
+<li>左（上）が良いフォーム、右（下）が選んだ崩れです。</li>
+<li>下半身から順に「<b>骨盤 → 胸 → 肘 → 肩</b>」とピーク（山の頂上）が来るのが理想とされています。グラフの下に、それぞれのピークの順番が文字で出て、「理想の順番」か「順番が崩れている」かが分かります。</li>
+<li>縦の線は今見ている瞬間です。再生やスライダーと連動します。</li>
+</ul>
+<h2 id="use"><span class="no">10</span>指導・説明での使い方の例</h2>
+
+<ol>
+<li>投手本人に、気になる崩れを選んで<b>0.25×で再生</b>し、自分の動きに近いのはどちらかを聞く</li>
+<li>局面名を押して止め、<b>「重ねて比較」</b>でずれている部位を指で示す</li>
+<li><b>程度の点</b>を4 → 2 → 0 と下げて、崩れが小さくなるとどう変わるかを見せる</li>
+<li>説明欄の<b>チェック方法の例</b>を、その場で一緒に試す</li>
+</ol>
+<div class="tip">ここに示す良いフォームは一例です。フォームは体格や年齢、目的によってさまざまです。痛みや違和感があるときは、フォームを直す前に医療機関を受診してください。</div>
+<h2 id="faq"><span class="no">11</span>よくある質問</h2>
+
+<h3>インターネットにつながっていなくても使えますか？</h3>
+<p>使えます。すべての機能がオフラインで動きます。</p>
+<h3>画面が真っ白・動かないときは？</h3>
+<p>アプリを一度終了して（画面の下から上になぞり、アプリを上に払う）、開き直してください。直らない場合は、機種名と iOS の版を添えてお問い合わせください。</p>
+<h3>選んだ崩れを最初の状態に戻したい</h3>
+<p>崩れのボタンの下の「すべて解除」を押すと、良いフォームどうしの比較に戻ります。</p>
+<h3>表示される角度や数値は、実際の選手の値ですか？</h3>
+<p>いいえ。人体の動きと角度は本アプリ独自の模式値で、特定の選手の動きを再現したものではありません。文献の数値は「データで見る影響」に出典を明記して紹介しています。</p>
+<h3>左投げには対応していますか？</h3>
+<p>現在は右投げのみです。</p>
+<h3>版番号はどこで確かめられますか？</h3>
+<p>画面のいちばん下の「このアプリについて」に表示されます。</p>
+
+<p class="foot">本アプリは指導・説明用の教材です。表示は単純化した模式図で、個々の選手の診断や治療の代わりにはなりません。<br>
+ご意見・不具合のご報告：<a href="mailto:airio.creative@gmail.com">airio.creative@gmail.com</a><br>
+© 2026 AirIo Creative　<a href="./">サポート</a>　<a href="privacy-policy.html">プライバシーポリシー</a>　<a href="../">フォーム比較3D シリーズ</a></p>
+</body>
+</html>
